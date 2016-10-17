@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+.RDataTmp
+footballscrapper.Rproj
+playbyplay.csv
