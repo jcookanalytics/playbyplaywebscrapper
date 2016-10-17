@@ -1,5 +1,4 @@
 #All the code should be able to run by sourcing webscrapper.R
+***Important note this is only setup for full play by play data from cbssports
 
-##current version requires you to alter the code to scrap different games
-
-##next version will be set up as a function
+##The code is setup as a function
