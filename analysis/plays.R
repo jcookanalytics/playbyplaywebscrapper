@@ -3,7 +3,14 @@ plays <- game[which(!is.na(game$V2)),]
 
 #down and distance
 plays$down.distance <- str_extract(plays$V1,"([1234567890]+-[1234567890]+)")
-#Down
+#Fix and goal downs
+plays$down.distance[plays$down.distance=="1-0"] <- "1-GOAL"
+plays$down.distance[plays$down.distance=="2-0"] <- "2-GOAL"
+plays$down.distance[plays$down.distance=="3-0"] <- "3-GOAL"
+plays$down.distance[plays$down.distance=="4-0"] <- "4-GOAL"
+
+#adding the down as a seperate column
+
 plays$down <- str_extract(plays$V1,"([1-4])")
 #distance
 plays$distance <- str_extract(plays$V1,"(?<=-)[0-9]+")
@@ -92,18 +99,6 @@ plays$penalty <- str_extract(plays$Play,"pen")
 
 plays$nogain <- str_extract(plays$Play,"no gain")
 
-RoadPass <- subset(plays, plays$Possession==road&plays$Type=="pass")
-sum(as.numeric(RoadPass$Yards),na.rm=TRUE)
-RoadRush <- subset(plays, (plays$Possession==road)&(plays$Type=="rush"|plays$Type=="sack"))
-sum(as.numeric(RoadRush$Yards),na.rm=TRUE)
-
-HomePass <- subset(plays, plays$Possession==home&plays$Type=="pass")
-sum(as.numeric(HomePass$Yards),na.rm=TRUE)
-HomeRush <- subset(plays, (plays$Possession==home)&(plays$Type=="rush"|plays$Type=="sack"))
-sum(as.numeric(HomeRush$Yards),na.rm=TRUE)
-
-RoadYards <- subset(plays,(plays$Possession==road)&(plays$Type!=c("punt","pen","kick")))
-sum(as.numeric(RoadYards$Yards),na.rm = TRUE)
 
 
 
