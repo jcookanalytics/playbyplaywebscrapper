@@ -49,7 +49,7 @@ for (i in plays$Minute[2:plays.rows]){
 #add quarter to the table
 plays$Quarter <- quarter
 #create a play type
-type <- paste("kick","rush","pass","punt","lost","sack","pen",sep="|")
+type <- paste("kick","rush","pass","punt","lost","sack","pen","field goal",sep="|")
 plays$Type <- str_extract(plays$Play,type)
 plays$Type[plays$Type=="lost"] <- "rush"
 
