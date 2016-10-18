@@ -1,5 +1,5 @@
 #create the plays table
-plays <- game[which(!is.na(game$V2)),]
+plays <- game_table[which(!is.na(game_table$V2)),]
 
 #down and distance
 plays$down.distance <- str_extract(plays$V1,"([1234567890]+-[1234567890]+)")
